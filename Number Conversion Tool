@@ -1,0 +1,233 @@
+def decimal_to_binary(n):
+    s = ""
+    while n > 0:
+        s += str(n % 2)
+        n = n // 2
+    s = s[::-1]
+    return s
+
+
+def binary_to_decimal(s):
+    l = len(s)
+    num = 0
+    factor = 1
+    for i in range(l - 1, -1, -1):
+        num += (int(s[i]) * factor)
+        factor *= 2
+    return num
+
+
+def decimal_to_hexadecimal(n):
+    s = ""
+    representation = ['A', 'B', 'C', 'D', 'E', 'F']
+    while n > 0:
+        rem = n % 16
+        if rem >= 10:
+            s += representation[rem - 10]
+        else:
+            s += str(rem)
+        n = n // 16
+    s = s[::-1]
+    return s
+
+
+def hexadecimal_to_decimal(s):
+    representation = ['A', 'B', 'C', 'D', 'E', 'F']
+    num = 0
+    factor = 1
+    for i in range(len(s) - 1, -1, -1):
+        if s[i] in representation:
+            val = 10 + representation.index(s[i])
+            num += (val * factor)
+        else:
+            num += (int(s[i]) * factor)
+        factor *= 16
+    return num
+
+
+def decimal_to_octal(n):
+    s = ""
+    while n > 0:
+        s += str(n % 8)
+        n = n // 8
+    s = s[::-1]
+    return s
+
+
+def octal_to_decimal(s):
+    l = len(s)
+    num = 0
+    factor = 1
+    for i in range(l - 1, -1, -1):
+        num += (int(s[i]) * factor)
+        factor *= 8
+    return num
+
+
+def binary_to_hexadecimal(s):
+    decimal = binary_to_decimal(s)
+    hexa_number = decimal_to_hexadecimal(decimal)
+    return hexa_number
+
+
+def hexadecimal_to_binary(s):
+    decimal = hexadecimal_to_decimal(s)
+    binary = decimal_to_binary(decimal)
+    return binary
+
+
+def binary_to_octal(s):
+    decimal = binary_to_decimal(s)
+    octal = decimal_to_octal(decimal)
+    return octal
+
+
+def octal_to_binary(s):
+    decimal = octal_to_decimal(s)
+    binary = decimal_to_binary(decimal)
+    return binary
+
+
+def hexadecimal_to_octal(s):
+    decimal = hexadecimal_to_decimal(s)
+    octal = decimal_to_octal(decimal)
+    return octal
+
+
+def octal_to_hexadecimal(s):
+    decimal = octal_to_decimal(s)
+    hexadecimal = decimal_to_hexadecimal(decimal)
+    return hexadecimal
+
+
+def radixA_to_decimal(s, a):
+    s = s.upper()
+    factor = 1
+    num = 0
+    for i in range(len(s) - 1, -1, -1):
+        if s[i] >= 'A' and s[i] < 'Z':
+            num += (ord(s[i]) - 65 + 10) * factor
+        else:
+            num += (int(s[i]) * factor)
+        factor *= a
+    return num
+
+def decimal_to_radixB(n,b):
+    s = ""
+    while n > 0:
+        rem = n % b
+        if rem >= 10:
+            char = chr(55+rem)
+            s += str(char)
+        else:
+            s += str(rem)
+        n = n // b
+    s = s[::-1]
+    return s
+
+def radixA_to_B(s,a,b):
+    decimal = radixA_to_decimal(s, a)
+    radixB = decimal_to_radixB(decimal,b)
+    return radixB
+
+def print_menu():
+    print("1) Convert decimal to binary and vice-versa")
+    print("2) Convert decimal to hexadecimal and vice-versa")
+    print("3) Convert decimal to octal and vice-versa.")
+    print("4) Convert binary to hexadecimal and vice-versa.")
+    print("5) Convert binary to octal and vice-versa.")
+    print("6) Convert hexadecimal to octal and vice-versa.")
+    print("7) Convert number with radix A to radix B. Here A,B <= 36. In this case, you must take A,B as input.")
+
+def main():
+    print_menu()
+    print("Enter your choice. ")
+    choice = int(input())
+    if choice == 1:
+        print("Choose 1 from below.")
+        print("1.Decimal to Binary.")
+        print("2.Binary to Decimal.")
+        conversion_choice = int(input("Enter the choice 1 or 2."))
+        if conversion_choice == 1:
+            print("Enter the number")
+            n = int(input())
+            print(decimal_to_binary(n))
+        else:
+            print("Enter binary string.")
+            s = input()
+            print(binary_to_decimal(s))
+    elif choice == 2:
+        print("1. Decimal to Hexadecimal")
+        print("2. Hexadecimal to Decimal")
+        conversion_choice = int(input("Enter the choice 1 or 2."))
+        if conversion_choice == 1:
+            print("Enter the number")
+            n = int(input())
+            print(decimal_to_hexadecimal(n))
+        else:
+            print("Enter binary string.")
+            s = input()
+            print(hexadecimal_to_decimal(s))
+    elif choice == 3:
+        print("1. Decimal to Octal")
+        print("2. Octal to Decimal")
+        conversion_choice = int(input("Enter the choice 1 or 2."))
+        if conversion_choice == 1:
+            print("Enter the number")
+            n = int(input())
+            print(decimal_to_octal(n))
+        else:
+            print("Enter binary string.")
+            s = input()
+            print(octal_to_decimal(s))
+    elif choice == 4:
+        print("1. Binary to Hexadecimal")
+        print("2.Hexadecimal to Binary")
+        conversion_choice = int(input("Enter the choice 1 or 2."))
+        if conversion_choice == 1:
+            print("Enter the binary number.")
+            s = input()
+            print(binary_to_hexadecimal(s))
+        else:
+            print("Enter hexadecimal number")
+            s = input()
+            print(hexadecimal_to_binary(s))
+    elif choice == 5:
+        print("1. Binary to Octal")
+        print("2. Octal to Binary")
+        conversion_choice = int(input("Enter the choice 1 or 2."))
+        if conversion_choice == 1:
+            print("Enter the binary number")
+            s = input()
+            print(binary_to_octal(s))
+        else:
+            print("Enter octal number")
+            s = input()
+            print(octal_to_binary(s))
+    elif choice == 6:
+        print("1. Hexadecimal to Octal ")
+        print("2. Octal to Hexadecimal")
+        conversion_choice = int(input("Enter the choice 1 or 2."))
+        if conversion_choice == 1:
+            print("Enter the hexadecimal number")
+            s = input()
+            print(hexadecimal_to_octal(s))
+        else:
+            print("Enter the octal number")
+            s = input()
+            print(octal_to_hexadecimal(s))
+    elif choice == 7:
+        print("Radix A to Radix B Conversion. ")
+        print("Input Radix A")
+        a = int(input())
+        print("Input Radix B")
+        b = int(input())
+        print("Enter the number with Radix A.")
+        s = input()
+        print(radixA_to_B(s,a,b))
+
+    else:
+        print("Wrong Choice.")
+
+if __name__ == '__main__':
+    main()
