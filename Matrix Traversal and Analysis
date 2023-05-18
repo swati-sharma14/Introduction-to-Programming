@@ -1,0 +1,133 @@
+def input_matrix():
+    print("Enter the number of rows/columns in the matrix ")
+    n = int(input())
+    matrix = []
+    for i in range(n):
+        print("Enter row number ", (i + 1))
+        row_i = list(map(int, input().split()))
+        matrix += [row_i]
+    return n,matrix
+
+
+def print_menu():
+    print("1. Normal Traversal")
+    print("2. Alternating Traversal")
+    print("3. Spiral Traversal")
+    print("4. Boundary Traversal")
+    print("5. Diagonal Traversal from right to left")
+    print("6. Diagonal traversal from left to right")
+
+    print("Enter your choice (must be a valid integer between 1 and 6)")
+    choice = int(input())
+
+    return choice
+
+def normal_traversal(n,matrix):
+    for i in range(n):
+        print(*matrix[i] , end=" ")
+    print()
+
+def alternating_traversal(n,matrix):
+    for i in range(n):
+        if i % 2 == 0:
+            print(*matrix[i], end=" ")
+        else:
+            print(*matrix[i][::-1] ,end = " ")
+    print()
+
+def spiral_traversal(n,matrix):
+    num = (n + 1) // 2
+    ans = []
+    rs = 0
+    re = n - 1
+    cs = 0
+    ce = n - 1
+    for i in range(num):
+        if i == num - 1:
+            if rs == re:
+                temp = matrix[rs][cs:ce + 1]
+                ans += temp
+                break
+            if cs == ce:
+                temp = []
+                for j in range(rs, re + 1):
+                    temp += [matrix[j][cs]]
+                ans += temp
+                break
+        temp1 = matrix[rs][cs:ce + 1]
+        temp2 = matrix[re][cs:ce + 1]
+        temp2.reverse()
+        temp3 = []
+        temp4 = []
+        for j in range(rs + 1, re):
+            temp3 += [matrix[j][cs]]
+            temp4 += [matrix[j][ce]]
+        temp3.reverse()
+        ans += temp1 + temp4 + temp2 + temp3
+        rs += 1
+        re -= 1
+        cs += 1
+        ce -= 1
+    print(*ans)
+
+
+def boundary_traversal(n, matrix):
+    boundary1 = matrix[0]
+    boundary2 = []
+    for i in range(n):
+        boundary2 += [matrix[i][-1]]
+    boundary2 = boundary2[1:]
+    boundary3 = matrix[-1][::-1]
+    boundary3 = boundary3[1:]
+    boundary4 = []
+    for i in range(1, n-1):
+        boundary4 += [matrix[i][0]]
+    boundary4 = boundary4[::-1]
+
+    print(*boundary1,*boundary2,*boundary3,*boundary4)
+
+def diagonal_traversal_right_to_left(n,matrix):
+    num_diagonal = 2*n - 1
+    answer = [[] for i in range(num_diagonal)]
+    for i in range(n):
+        for j in range(n):
+            answer[i+j] += [matrix[i][j]]
+    for i in answer:
+        print(*i, end= " ")
+    print()
+
+
+def diagonal_traversal_left_to_right(n, matrix):
+    num_diagonal = 2*n - 1
+    answer = [[] for i in range(num_diagonal)]
+    for i in range(n):
+        for j in range(n):
+            answer[i-j] += [matrix[i][j]]
+    answer = answer[n:] + answer[:n]
+    for i in answer:
+        print(*i,end= " ")
+    print()
+
+
+def main():
+    n, matrix = input_matrix()
+    choice = print_menu()
+    if choice == 1:
+        normal_traversal(n, matrix)
+    elif choice == 2:
+        alternating_traversal(n,matrix)
+    elif choice == 3:
+        spiral_traversal(n,matrix)
+    elif choice == 4:
+        boundary_traversal(n,matrix)
+    elif choice == 5:
+        diagonal_traversal_right_to_left(n,matrix)
+    elif choice == 6:
+        diagonal_traversal_left_to_right(n,matrix)
+    else:
+        print("Wrong Choice")
+
+
+
+if __name__ == '__main__':
+    main()
