@@ -1,0 +1,37 @@
+print("Provide the polynomial function details:")
+a = int(input("Enter the degree of the polynomial: "))
+n = a + 1
+
+if n == 1:
+    b = int(input("Coefficient 1: "))
+    c = 0
+    d = 0
+    e = 0
+elif n == 2:
+    b = int(input("Coefficient 1: "))
+    c = int(input("Coefficient 2: "))
+    d = 0
+    e = 0
+elif n == 3:
+    b = int(input("Coefficient 1: "))
+    c = int(input("Coefficient 2: "))
+    d = int(input("Coefficient 3: "))
+    e = 0
+elif n == 4:
+    b = int(input("Coefficient 1: "))
+    c = int(input("Coefficient 2: "))
+    d = int(input("Coefficient 3: "))
+    e = int(input("Coefficient 4: "))
+
+l = int(input("Provide lower bound for x: "))
+u = int(input("Provide upper bound for x: "))
+
+
+def f(x):
+    return int((b * x) + (c * (x ** 2)) + (d * (x ** 3)) + (e * (x ** 4)))
+
+
+s = int(input("Provide the steps by which you want to increment: "))
+
+for i in range(l, u + 1, s):
+    print("*" * f(i))
