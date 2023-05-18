@@ -1,0 +1,77 @@
+def getReverse(n):
+    return int(str(n)[::-1])
+
+def checkPalindrome(n):
+    return str(n) == str(n)[::-1]
+
+def checkNarcissistic(n):
+    num_digits = len(str(n))
+    total = 0
+    temp = n
+    while temp > 0:
+        digit = temp % 10
+        total += digit ** num_digits
+        temp //= 10
+    return total == n
+
+def findDigitSum(n):
+    if n < 10:
+        return n
+    else:
+        total = 0
+        while n > 0:
+            digit = n % 10
+            total += digit
+            n //= 10
+        return total
+
+def findSquareDigitSum(n):
+    if n < 10:
+        return n ** 2
+    else:
+        total = 0
+        while n > 0:
+            digit = n % 10
+            total += digit ** 2
+            n //= 10
+        return total
+
+def menu():
+    print("Hello User, Welcome to the Application. Please select one of the following operations.")
+    print("1. Find reverse of a number")
+    print("2. Check whether a number is a palindrome or not.")
+    print("3. Check whether a number is a Narcissistic number or not.")
+    print("4. Find the sum of digits of a number")
+    print("5. Find the sum of squares of digits of a number.")
+    print("6. Select 6 to exit the application.")
+
+while True:
+    menu()
+    choice = int(input("Enter your choice: "))
+
+    if choice == 1:
+        n = int(input("Enter the number: "))
+        print("Reverse:", getReverse(n))
+    elif choice == 2:
+        n = int(input("Enter the number: "))
+        if checkPalindrome(n):
+            print("Palindrome: True")
+        else:
+            print("Palindrome: False")
+    elif choice == 3:
+        n = int(input("Enter the number: "))
+        if checkNarcissistic(n):
+            print("Narcissistic: True")
+        else:
+            print("Narcissistic: False")
+    elif choice == 4:
+        n = int(input("Enter the number: "))
+        print("Digit Sum:", findDigitSum(n))
+    elif choice == 5:
+        n = int(input("Enter the number: "))
+        print("Square Digit Sum:", findSquareDigitSum(n))
+    elif choice == 6:
+        print("Exiting the application. Goodbye!")
+        break
+    else:
+        print("Invalid choice. Please try again.")
