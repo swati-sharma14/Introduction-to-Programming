@@ -7,8 +7,8 @@ This code enables you to interactively provide the details of a polynomial funct
 
 🛠️ Usage
 1. Begin by providing the details of the polynomial function:
-  - Enter the degree of the polynomial (highest power).
-  - Input the coefficients of the polynomial based on the degree.
+   - Enter the degree of the polynomial (highest power).
+   - Input the coefficients of the polynomial based on the degree.
 2. Specify the lower and upper bounds for x, defining the range for graph visualization.
 3. Choose the step size by which you want to increment x for each calculation.
 4. Watch the graph unfold as the code generates asterisks based on the function's output.
