@@ -14,11 +14,11 @@ Each transformation is performed using separate functions, ensuring a modular an
 🛠️ Usage
 1. Provide the number of transformation queries you want to apply.
 2. For each query, follow these steps:
-  - Specify the type of transformation: scaling (S), translation (T), or rotation (R).
-  - Enter the corresponding parameters for the chosen transformation.
-    - Scaling: Provide scaling factors for each axis (sx, sy, sz).
-    - Translation: Specify the translation distances for each axis (tx, ty, tz).
-    - Rotation: Choose the axis of rotation (x, y, or z) and the angle of rotation (th).
+    - Specify the type of transformation: scaling (S), translation (T), or rotation (R).
+    - Enter the corresponding parameters for the chosen transformation.
+      - Scaling: Provide scaling factors for each axis (sx, sy, sz).
+      - Translation: Specify the translation distances for each axis (tx, ty, tz).
+      - Rotation: Choose the axis of rotation (x, y, or z) and the angle of rotation (th).
 3. Sit back and watch the shape transform before your eyes!
 
 Feel free to experiment and unleash your creativity by trying out different combinations of transformations. 🎨
