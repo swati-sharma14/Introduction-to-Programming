@@ -1,0 +1,58 @@
+Cnotes = ["C", "C#", "D", "D#", "E" , "F", "F#", "G", "G#", "A", "A#", "B", "C'", "C#'", "D'", "D#'", "E'" , "F'", "F#'", "G'", "G#'", "A'", "A#'", "B'"]
+
+def nodeCreate():
+    global maj
+    maj = open("scaleMajor.txt", "w+")
+    global mino 
+    mino = open("scaleMinor.txt", "w+")
+    
+
+def writeMajor(root):
+    tem = 0
+    for i in range(0, len(notes)):
+        if root == notes[i]:
+            tem = i
+    maj.write(notes[tem]+ " "+ notes[tem + 2]+ " "+ notes[tem+ 4]+ " "+ notes[tem+ 5]+ " " +notes[tem+ 7]+ " "+ notes[tem+ 9]+ " "+ notes[tem + 11]+ " "+ notes[tem+ 12] + "\n")
+    
+def writeMinor(root):
+    tem = 0
+    for i in range(0, len(notes)):
+        if root == notes[i]:
+            tem = i
+    mino.write(notes[tem]+ " "+ notes[tem + 2]+ " "+ notes[tem+ 3]+ " "+ notes[tem+ 5]+ " " +notes[tem+ 7]+ " "+ notes[tem+ 8]+ " "+ notes[tem + 10]+ " "+ notes[tem+ 12] + "\n")
+    
+
+def majorNotes(root):
+    major = open("scaleMajor.txt", "r")
+    majorLines= major.readlines()
+    for i in majorLines:
+        boo = i.split()
+        if( root == boo[0]):
+            print(i)
+    major.close()
+    
+def minorNotes(root):
+    minor = open("scaleMinor.txt", "r")
+    minorLines= minor.readlines()
+    for i in minorLines:
+        boo = i.split()
+        if( root == boo[0]):
+            print(i)
+    minor.close()
+
+    
+
+nodeCreate()
+for i in range(0,12):
+    writeMajor(notes[i])
+    writeMinor(notes[i])    
+maj.close()
+mino.close()  
+
+root = input("Enter the root node: ")
+scale = input("Enter the type of scale(Major/Minor): ")
+print("The scale in the key is:")
+if(scale == "Major"):
+    majorNotes(root)
+elif(scale == "Minor"):
+    minorNotes(root)
