@@ -1,0 +1,56 @@
+menu="\nEnter your choice:\n 1. Display specific word count\n 2. Display all unique words\n 3. Display all Word Counts\n 4. Replace word\n 5. Quit"
+print(menu)
+n=int(input())
+if n==1:
+    a=input("Enter word:")
+    b=open("question1_input.txt")
+    c=str(b.read()).split()
+    count=0
+    for i in c:
+        if i==a:
+            count=count+1
+        else:
+            pass
+    print("Word Count:", count)
+    print(menu)
+if n==2:
+    b=open("question1_input.txt")
+    c=str(b.read()).split()
+    d=set(c)
+    print(d)
+    print(menu)
+if n==3:
+    print("Word Counts:")
+    b=open("question1_input.txt")
+    c=str(b.read()).split()
+    number=dict()
+    l=len(number)
+    for i in c:
+        if i in number:
+            number[i]=number[i]+1
+        else:
+            number[i]=1
+    for i in number:
+        print(i,":",number[i])
+    print(menu)
+if n==4:
+    b=open("question1_input.txt")
+    c=str(b.read()).split()
+    replace=input("Enter the word to be replaced:")
+    if replace in c:
+        newword=input(f'Enter word that will replace {replace}:')
+        for i in c:
+            if i==replace:
+                index=c.index(i)
+                c[index]=newword
+            else:
+                pass
+    else:
+        pass
+    print(c)
+    print(menu)
+if n==5:
+    quit 
+
+
+
