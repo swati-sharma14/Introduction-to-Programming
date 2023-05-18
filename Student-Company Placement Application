@@ -1,0 +1,68 @@
+class Student:
+    def __init__(self,Name,cgpa,branch):
+        self.Name=Name
+        self.cgpa=cgpa
+        self.branch=branch
+        self.isPlaced=False
+    def isEligible(self,object):
+        if (self.cgpa >= object.requiredcgpa) and (self.branch==object.branches) and (self.isPlaced==False):
+            print('Student {} is eligible '.format(self.Name),end=' ')
+            print('Company {}'.format(self.name))
+        else:
+            print('Student {} is not eligible '.format(self.Name),end=' ')
+
+    def apply(self,object):
+        students=[]
+        students.append(object)
+
+    def getsPlaced(self):
+        self.isPlaced=True
+
+
+class Company:
+    def __init__(self,Name,requiredcgpa,branches,positionOpen):
+        self.name=Name
+        self.requiredcgpa=requiredcgpa
+        self.branches=branches
+        self.positionOpen=positionOpen
+        self.appliedStudents=[]
+        self.applicationOpen=True
+
+    def hireStudents(self):
+        print('The company {} has hired the following students'.format(self.name))
+        list1.sort(key=sort1)
+        list3=[]
+        list3.append(list1[-1:(-1*(positionOpened)+1):-1])
+        for j in list3:
+            j.isPlaced=True
+            print(j.Name)
+
+    def closeApplication(self):
+        print
+
+def sort1(element):
+    return element.cgpas
+
+n=int(input("Enter number of students(n>=5): "))
+list1=[]
+for i in range(0,n):
+    students=input('Enter name of Student {}: '.format(i+1))
+    cgpas=input('Enter cgpa of Student {}: '.format(i+1))
+    branchs=input('Enter branch of Student {}: '.format(i+1))
+    details=Student(students,cgpas,branchs)
+    list1.append(details)
+
+list2=[]
+c=int(input("Enter number of companies (n>=2): "))
+for i in range(0,c):
+    companys=input('Enter name of Company {}: '.format(i+1))
+    requiredcgpas=input('Enter required cgpa of Company {}: '.format(i+1))
+    brancheseligible=[str(i) for i in input('Enter space seperated branches of Company {}: '.format(i+1)).split()]
+    positionOpened=int(input('Enter the number of positions opened in Company {}: '.format(i+1)))
+    companydetails=Company(companys,requiredcgpas,brancheseligible,positionOpened)
+    list2.append(companydetails)
+
+for i in list1:
+    for j in range(0,len(list2)):
+        i.isEligible(list2[j])
+object.hireStudents()
