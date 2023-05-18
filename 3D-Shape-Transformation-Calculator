@@ -1,0 +1,87 @@
+from math import sin, cos
+
+n = int(input("Enter the number of vertices of the 3D shape: "))
+x = [int(i) for i in input().split()]
+y = [int(i) for i in input().split()]
+z = [int(i) for i in input().split()]
+
+
+def scaling(sx, sy, sz):
+    T = [[sx, 0, 0, 0], [0, sy, 0, 0], [0, 0, sz, 0], [0, 0, 0, 1]]
+    S = [x, y, z, [1] * n]
+    ans = [[0] * n, [0] * n, [0] * n, [0] * n]
+    for i in range(4):
+        for j in range(n):
+            for k in range(4):
+                ans[i][j] += T[i][k] * S[k][j]
+    return ans
+
+
+def translating(tx, ty, tz):
+    T = [[1, 0, 0, tx], [0, 1, 0, ty], [0, 0, 1, tz], [0, 0, 0, 1]]
+    S = [x, y, z, [1] * n]
+    ans = [[0] * n, [0] * n, [0] * n, [0] * n]
+    for i in range(4):
+        for j in range(n):
+            for k in range(4):
+                ans[i][j] += T[i][k] * S[k][j]
+    return ans
+
+
+def rotatingx(th):
+    T = [[1, 0, 0, 0], [0, cos(th), -sin(th), 0], [0, sin(th), cos(th), 0], [0, 0, 0, 1]]
+    S = [x, y, z, [1] * n]
+    ans = [[0] * n, [0] * n, [0] * n, [0] * n]
+    for i in range(4):
+        for j in range(n):
+            for k in range(4):
+                ans[i][j] += T[i][k] * S[k][j]
+    return ans
+
+
+def rotatingy(th):
+    T = [[cos(th), 0, sin(th), 0], [0, 1, 0, 0], [-sin(th), 0, cos(th), 0], [0, 0, 0, 1]]
+    S = [x, y, z, [1] * n]
+    ans = [[0] * n, [0] * n, [0] * n, [0] * n]
+    for i in range(4):
+        for j in range(n):
+            for k in range(4):
+                ans[i][j] += T[i][k] * S[k][j]
+    return ans
+
+def rotatingz(cos_th, sin_th):
+    T = [[cos_th, -sin_th, 0, 0],
+         [sin_th, cos_th, 0, 0],
+         [0, 0, 1, 0],
+         [0, 0, 0, 1]]
+    S = [x, y, z, [1] * n]
+    ans = [[0] * n, [0] * n, [0] * n, [0] * n]
+    for i in range(4):
+        for j in range(n):
+            for k in range(4):
+                ans[i][j] += T[i][k] * S[k][j]
+    return ans
+
+queries = int(input("The number of transformation queries to be applied: "))
+k = 0
+for k in range(queries):
+    t = [str(i) for i in input().split()]
+    if t[0] == "S":
+        sx = int(t[1])
+        sy = int(t[2])
+        sz = int(t[3])
+        scaling(sx, sy, sz)
+    elif t[0] == "T":
+        tx = int(t[1])
+        ty = int(t[2])
+        tz = int(t[3])
+        translating(tx, ty, tz)
+    elif t[0] == "R":
+        th = float(t[2])
+        if t[1] == "x":
+            rotatingx(cos(th), sin(th))
+        elif t[1] == "y":
+            rotatingy(cos(th), sin(th))
+        elif t[1] == "z":
+            rotatingz(cos(th), sin(th))
+    k = k + 1
