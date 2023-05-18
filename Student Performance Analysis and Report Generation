@@ -1,0 +1,90 @@
+a=open("Q4\Student\Ash_12.txt")
+b=open("Q4\Student\Brock_1000.txt")
+c=open("Q4\Student\John_1357.txt")
+d=open("Q4\Student\Misty_372.txt")
+e=open("Q4\Student\Ram_1211.txt")
+f=open("Q4\Admin\AnswerKey.txt")
+
+Answer=f.read().split()
+Answerans=[]
+for i in Answer:
+    A=Answer.index(i)
+    if A%2==0:
+        pass
+    else:
+        Answerans.append(i)
+
+Ash=a.read().split()
+Ashans=[]
+for i in Ash:
+    A=Ash.index(i)
+    if A%2==0:
+        pass
+    else:
+        Ashans.append(i)
+
+Brock=b.read().split()
+Brockans=[]
+for i in Brock:
+    A=Brock.index(i)
+    if A%2==0:
+        pass
+    else:
+        Brockans.append(i)
+
+John=c.read().split() 
+Johnans=[]
+for i in John:
+    A=John.index(i)
+    if A%2==0:
+        pass
+    else:
+        Johnans.append(i)
+
+Misty=d.read().split() 
+Mistyans=[]
+for i in Misty:
+    A=Misty.index(i)
+    if A%2==0:
+        pass
+    else:
+        Mistyans.append(i)
+
+Ram=e.read().split()
+Ramans=[]
+for i in Ram:
+    A=Ram.index(i)
+    if A%2==0:
+        pass
+    else:
+        Ramans.append(i)
+# We've four lists- Answerans, Ashans, Brocokans, Johnans, Mistyans, Ramans
+
+def compare(l1,l2):
+    count=0
+    for i in range(0,20):
+        if l1[i]=="-":
+            pass
+        elif l1[i]==l2[i]:
+            count=count+4
+        elif l1[i]!=l2[i]:
+            count=count+(-1)
+    return(count)
+
+a=str(compare(Ashans,Answerans))
+b=str(compare(Brockans,Answerans))
+c=str(compare(Johnans,Answerans))
+d=str(compare(Mistyans,Answerans))
+e=str(compare(Ramans,Answerans))
+
+file=open('Q4\Admin\RegisteredStudents.txt')
+s=file.read().splitlines()
+s[0]=s[0]+' ' + a 
+s[1]=s[1]+' ' + b 
+s[2]=s[2]+' ' + c 
+s[3]=s[3]+' ' + d 
+s[4]=s[4]+' ' + e 
+
+final=open('Q4\Admin\Finalreport.txt', 'w')
+for i in s:
+    final.write(i+"\n")
