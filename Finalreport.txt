@@ -1,0 +1,5 @@
+John 1357 9
+Ram 1211 6
+Brock 1000 7
+Misty 372 -4
+Ash 12 0
