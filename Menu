@@ -1,0 +1,104 @@
+n = input("What is the number of students in the class? ")
+dimension = input("Choose a geometric shape: 2D or 3D? ")
+
+if dimension == "2D":
+    print("Menu")
+    print("1. Square\n2. Rectangle\n3. Rhombus\n4. Parallelogram\n5. Circle\n")
+    n = input("Type the shape code of the shape you want: ")
+
+    if n == "1":
+        print("You chose Square")
+        s = int(input("Enter the length of side s: "))
+        perimeter = 4 * s
+        area = s * s
+        print("The perimeter of the square is", perimeter)
+        print("The area of the square is", area)
+
+    elif n == "2":
+        print("You chose Rectangle")
+        l = int(input("Enter the length of rectangle: "))
+        b = int(input("Enter the breadth of rectangle: "))
+        perimeter = 2 * (l + b)
+        area = l * b
+        print("The perimeter of the rectangle is", perimeter)
+        print("The area of the rectangle is", area)
+
+elif dimension == "3D":
+    print("Menu")
+    print("1. Cube\n2. Cuboid\n3. Right circular cone\n4. Hemisphere\n5. Sphere\n6. Solid cylinder\n7. Hollow Cylinder\n")
+    n = input("Type the shape code of the shape you want: ")
+
+    if n == "1":
+        print("You chose Cube")
+        s = int(input("Enter the length of side s: "))
+        CSA = 4 * s * s
+        TSA = 6 * s * s
+        Volume = s ** 3
+        print("The CSA of the cube is", CSA)
+        print("The TSA of the cube is", TSA)
+        print("The Volume of the cube is", Volume)
+
+    elif n == "2":
+        print("You chose Cuboid")
+        l = int(input("Enter the length of cuboid: "))
+        b = int(input("Enter the breadth of cuboid: "))
+        h = int(input("Enter the height of cuboid: "))
+        CSA = 2 * (l + b) * h
+        TSA = 2 * ((l * b) + (b * h) + (h * l))
+        Volume = l * b * h
+        print("The CSA of the cuboid is", CSA)
+        print("The TSA of the cuboid is", TSA)
+        print("The Volume of the cuboid is", Volume)
+
+    elif n == "3":
+        print("You chose Right circular cone")
+        l = int(input("Enter the slant height: "))
+        r = int(input("Enter the radius: "))
+        h = int(input("Enter the height: "))
+        CSA = 3.14 * r * l
+        TSA = 3.14 * r * (l + r)
+        Volume = (3.14 * r * r * h) / 3
+        print("The CSA of the cone is", CSA)
+        print("The TSA of the cone is", TSA)
+        print("The Volume of the cone is", Volume)
+
+    elif n == 4:
+    print("You chose Hemisphere")
+    r = int(input("Enter the radius: "))
+    CSA = 2 * 3.14 * r * r
+    TSA = 3 * 3.14 * r * r
+    Volume = (2 * 3.14 * r * r * r) / 3
+    print("The CSA of the hemisphere is", CSA)
+    print("The TSA of the hemisphere", TSA)
+    print("The Volume of the hemisphere", Volume)
+
+    elif n == 5:
+        print("You chose Sphere")
+        r = int(input("Enter the radius: "))
+        CSA = 4 * 3.14 * r * r
+        TSA = 4 * 3.14 * r * r
+        Volume = (4 * 3.14 * r * r * r) / 3
+        print("The CSA of the sphere is", CSA)
+        print("The TSA of the sphere", TSA)
+        print("The Volume of the sphere", Volume)
+
+    elif n == 6:
+        print("You chose Solid cylinder")
+        r = int(input("Enter the radius: "))
+        h = int(input("Enter the height: "))
+        CSA = 2 * 3.14 * r * h
+        TSA = 2 * 3.14 * r * (h + r)
+        Volume = 3.14 * r * r * h
+        print("The CSA of the solid cylinder is", CSA)
+        print("The TSA of the solid cylinder", TSA)
+        print("The Volume of the solid cylinder", Volume)
+
+    elif n == 7:
+        print("You chose Hollow cylinder")
+        r1 = int(input("Enter the outer radius: "))
+        r2 = int(input("Enter the inner radius: "))
+        h = int(input("Enter the height: "))
+        CSA = 2 * 3.14 * h * (r1 + r2)
+        Volume = 3.14 * (r1 - r2) * h
+        print("The CSA of the hollow cylinder is", CSA)
+        print("The Volume of the hollow cylinder", Volume)
