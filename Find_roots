@@ -1,0 +1,33 @@
+def find_roots(l):
+    # Define the polynomial function
+    def f(x):
+        return sum(x**exp for exp in l)
+
+    # Define the derivative of the polynomial function
+    def f_prime(x):
+        return sum(exp * x**(exp-1) for exp in l)
+
+    # Initialize the initial guess for the root
+    x0 = 1.0
+
+    # Set the maximum number of iterations and the tolerance for convergence
+    max_iterations = 100
+    tolerance = 1e-6
+
+    # Perform Newton-Raphson iterations
+    for _ in range(max_iterations):
+        fx = f(x0)
+        fpx = f_prime(x0)
+
+        # Update the guess using the Newton-Raphson formula
+        x1 = x0 - fx / fpx
+
+        # Check if the root has converged
+        if abs(x1 - x0) < tolerance:
+            return x1
+
+        # Update the guess for the next iteration
+        x0 = x1
+
+    # Return None if the root did not converge within the maximum number of iterations
+    return None
