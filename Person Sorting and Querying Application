@@ -1,0 +1,52 @@
+class Person:
+    def __init__(self,firstname,lastname,age):
+        self.firstname=firstname
+        self.lastname=lastname
+        self.age=age
+
+    def object_info(self):
+        print(self.firstname, end='')
+        print(self.lastname, end='')
+        print(self.age)
+
+def sort1(element):
+    return element.firstname
+
+def sort2(element):
+    return element.lastname
+
+def sort3(element):
+    return element.age
+
+
+print("Welcome to the Application!\n\n")
+n=int(input("Specify number of people to be enrolled"))
+list=[]
+for i in range(0,n):
+    a=input('Enter Firstname for person {} :'.format(i+1))
+    b=input('Enter Lastname for person {} :'.format(i+1))
+    c=input('Enter Age for person {} :'.format(i+1))
+    details=Person(a,b,c)
+    list.append(details)
+
+q=int(input("No. of queries: "))
+for i in range(0,q):
+    c=input('Query {} '.format(i+1))
+    if c=="firstname":
+        print("Order:")
+        list.sort(key=sort1)
+        for j in list:
+            j.object_info()
+
+    elif c=="lastname":
+        print("Order: ")
+        list.sort(key=sort2)
+        for j in list:
+            j.object_info()
+
+    elif c=="age":
+        print("Order: ")
+        list.sort(key=sort3)
+        for j in list:
+            j.object_info()
+
