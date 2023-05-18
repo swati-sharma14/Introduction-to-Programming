@@ -1,0 +1,87 @@
+from datetime import datetime
+print("WELCOME TO BANK OF IIIT-DELHI")
+class BankAccount:
+    def __init__(self,name,password,currentbalance):
+        self.name=name
+        self.password=password
+        self.current=currentbalance
+        self.file=open('{}.txt'.format(self.name), 'x')
+
+    def authenticate(self):
+        A=input("Enter your secret password: ")
+        try:
+            attempt=0
+            while attempt<=2:
+                if A== self.password :
+                    return True
+                else:
+                    attempt +=1
+                    A=input("Enter your secret password: ")
+                            
+        except AssertionError:
+            print("Too many wrong attempts")
+        
+    def deposit(self,deposit):
+        if self.authenticate():
+            self.current += deposit
+            f=open('{}.txt'.format(self.name), 'a')
+            a= str(' The amount of rupees {}'.format(deposit))
+            b= str(' has been added Current Balance ---> {}'.format(self.current))
+            f.write(str(datetime.now()))
+            f.write(a)
+            f.write(b + '\n')
+            f.close()
+        else:
+            print("Too many wrong attempts")
+
+    def withdraw(self,withdraw):
+        if self.authenticate():
+            if self.current>=withdraw:
+                self.current -= withdraw
+                f=open('{}.txt'.format(self.name), 'a')
+                a= str(' The amount of rupees {}'.format(withdraw))
+                b= str(' has been subtracted Current Balance ---> {}'.format(self.current))
+                f.write(str(datetime.now()))
+                f.write(a)
+                f.write(b + '\n')
+                f.close()
+            else:
+                print("Low balance!! Cannot be debited at this time!")
+                return
+        else:
+            print("Too many wrong attempts") 
+    
+    def bankStatement(self):
+        self.authenticate()
+        f=open('{}.txt'.format(self.name), 'r')
+        s=f.read()
+        print("Hey ",self.name,"! Your transaction history:")
+        print(s)
+
+name=input("Enter Name: ")
+password=input("Type password: ")
+currentbalance= int(input("Starting balance of your account: "))
+print("Select your option \n1. Deposit \n2. Withdraw \n3. Bank Statement")
+
+details=BankAccount(name,password,currentbalance)
+
+def function(choice):
+    if choice==1:
+        dept=int(input("Amount to be deposited: "))
+        details.deposit(dept)
+    elif choice==2:
+        draw=int(input("Amount to be withdrawn: "))
+        details.withdraw(draw)
+    elif choice==3:
+        details.bankStatement()
+x=int(input("Enter your choice: "))
+function(x)
+
+
+while True:
+    y=int(input("Enter your choice: "))
+    function(y)
+    a=input("Do you wish to continue Y/N ?")
+    if a=='N':
+        print("Thanks for visitng our bank.")
+        break
