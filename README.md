@@ -1,4 +1,3 @@
-ChatGPT
 📚 Polynomial Root Finder 🔍
 
 Welcome to the Polynomial Root Finder! This code allows you to find the roots of a given polynomial function using the Newton-Raphson method. 🌱
