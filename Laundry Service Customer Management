@@ -1,0 +1,71 @@
+class LaundryService:
+    def __init__(self,Nameofcustomer,Contactofcustomer,Email,Typeofcloth,Branded,Season):
+        self.name=Nameofcustomer
+        self.contact=Contactofcustomer
+        self.email=Email
+        self.type=Typeofcloth
+        self.brand=Branded
+        self.season=Season
+        self.id=id
+
+    def customerDetails(self):
+        print('\n'+ '\n'+ "1. Customer ID: ", self.id)
+        print("2. Customer Name: ", self.name)
+        print("3. Contact: ",self.contact)
+        print("4. Email: ",self.email)
+        print("5.Type of cloth: ",self.type)
+        print("6. Branded or not? (1 for true and 0 for false) ",self.brand)
+
+
+    def calculateCharge(self):
+        charge=0
+
+        if self.type=="Cotton":
+            charge += 50
+        elif self.type=="Silk":
+            charge +=30
+        elif self.type=="Woolen":
+            charge +=90
+        elif self.type=="Polyester":
+            charge += 20
+
+        if self.brand==1:
+            charge= (charge * 1.5)
+        else:
+            pass
+
+        if self.season=="Winter":
+            charge= (charge * 0.5)   
+        else:
+            charge= (charge*2)
+
+        return charge
+
+    def finalDetails(self):
+        self.customerDetails()
+        charge= self.calculateCharge()
+        if charge>200:
+            print("7. Total Charge: ", charge)
+            print("To be returned in 4 days")
+        else:
+            print("8. Total Charge: ",charge)
+            print("To be returned in 7 days")
+
+N=int(input("Number of customers:"))
+for i in range(1,N+1):
+    A= input("Name of customer: ")
+    B= int(input("Contact No.: "))
+    C= input("Email: ")
+    D= input("Type of cloth: ")
+    E= int(input("Branded: (1 for treu and 0 for false)"))
+    F= input("Season: ")
+    id=i
+    print('\n'+'\n'+ "The customer specific details are: ")
+    CUSTOMER=LaundryService(A,B,C,D,E,F)
+    CUSTOMER.finalDetails()
+    
+
+
+    
+
+
